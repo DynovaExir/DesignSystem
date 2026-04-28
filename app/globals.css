@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/**
+ * Dynova MDM — Design System Theme
+ * Based on Yekan Bakh FaNum font with RTL support
+ */
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Primitives */
+  --primary-100: #ddeef7;
+  --primary-300: #6aafd4;
+  --primary-500: #155c84;
+  --primary-700: #0c3a56;
+  --primary-900: #061e2d;
+
+  --neutral-100: #f3f4f6;
+  --neutral-300: #d1d5db;
+  --neutral-500: #6b7280;
+  --neutral-700: #374151;
+  --neutral-900: #111827;
+
+  --success-100: #e9f9ef;
+  --success-500: #0e7732;
+  --danger-100: #ffe9f0;
+  --danger-500: #c41f47;
+  --warning-100: #fef3e2;
+  --warning-500: #b47818;
+  --info-100: #f3eefe;
+  --info-500: #5c1fc8;
+
+  /* Semantic - Surface */
+  --background: var(--neutral-100);
+  --foreground: var(--neutral-900);
+  --card: #ffffff;
+  --card-foreground: var(--neutral-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--neutral-900);
+
+  /* Semantic - Interactive */
+  --primary: var(--primary-500);
+  --primary-foreground: #ffffff;
+  --secondary: var(--primary-100);
+  --secondary-foreground: var(--primary-500);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+  --accent: var(--neutral-100);
+  --accent-foreground: var(--neutral-900);
+
+  /* Semantic - Status */
+  --destructive: var(--danger-500);
+  --destructive-foreground: #ffffff;
+  --success: var(--success-500);
+  --success-foreground: #ffffff;
+  --warning: var(--warning-500);
+  --warning-foreground: #ffffff;
+  --info: var(--info-500);
+  --info-foreground: #ffffff;
+
+  /* Borders */
+  --border: var(--neutral-300);
+  --border-strong: var(--neutral-700);
+  --border-focus: var(--primary-500);
+  --input: var(--neutral-700);
+  --ring: var(--primary-500);
+
+  /* Selection */
+  --selection-selected: var(--primary-100);
+  --selection-highlighted: var(--warning-100);
+
+  /* Typography */
+  --font-sans: "Yekan Bakh FaNum", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Radius */
+  --radius: 0.75rem;
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px 0 rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-focus: var(--border-focus);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-selection-selected: var(--selection-selected);
+  --color-selection-highlighted: var(--selection-highlighted);
+
+  --color-primary-100: var(--primary-100);
+  --color-primary-500: var(--primary-500);
+  --color-primary-700: var(--primary-700);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-900: var(--neutral-900);
+  --color-success-100: var(--success-100);
+  --color-success-500: var(--success-500);
+  --color-danger-100: var(--danger-100);
+  --color-danger-500: var(--danger-500);
+  --color-warning-100: var(--warning-100);
+  --color-warning-500: var(--warning-500);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-full: var(--radius-full);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+}
