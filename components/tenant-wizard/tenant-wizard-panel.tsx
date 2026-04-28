@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { X, Maximize2, Minimize2 } from "lucide-react";
+import { X, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { StepIndicator } from "./step-indicator";
@@ -32,7 +32,7 @@ const existingNationalCodesByType = {
 
 export function TenantWizardPanel({ isOpen, onClose }: TenantWizardPanelProps) {
   const [currentStep, setCurrentStep] = useState(1);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [validationError, setValidationError] = useState<string>();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -202,6 +202,7 @@ export function TenantWizardPanel({ isOpen, onClose }: TenantWizardPanelProps) {
     setCurrentStep(1);
     setConfirmed(false);
     setValidationError(undefined);
+    setIsMinimized(false);
     setStep1Data({
       fullName: "",
       country: "",
@@ -232,114 +233,143 @@ export function TenantWizardPanel({ isOpen, onClose }: TenantWizardPanelProps) {
 
   return (
     <>
-      {/* Backdrop */}
-      <div className="fixed inset-0 bg-neutral-900/30 z-40" />
+      {/* Backdrop - only show when not minimized */}
+      <div 
+        className={cn(
+          "fixed inset-0 z-40 transition-all duration-300",
+          isMinimized ? "bg-transparent pointer-events-none" : "bg-neutral-900/30"
+        )}
+        onClick={() => {
+          if (!isMinimized) {
+            // Optional: close on backdrop click when not minimized
+          }
+        }}
+      />
 
-      {/* Panel */}
+      {/* Bottom Sheet */}
       <div
         className={cn(
-          "fixed inset-y-0 left-0 z-50 flex flex-col bg-card shadow-lg transition-all duration-300",
-          isExpanded ? "w-full" : "w-[560px]"
+          "fixed left-1/2 -translate-x-1/2 z-50 flex flex-col bg-card shadow-xl transition-all duration-300 ease-out",
+          "w-full max-w-[720px] rounded-t-2xl",
+          isMinimized 
+            ? "bottom-0 h-[56px]" 
+            : "bottom-0 max-h-[85vh]"
         )}
+        style={{
+          height: isMinimized ? "56px" : "auto",
+        }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border px-4 py-3">
+        <div 
+          className={cn(
+            "flex items-center justify-between border-b border-border px-4 py-3 rounded-t-2xl cursor-pointer",
+            isMinimized && "border-b-0"
+          )}
+          onClick={() => isMinimized && setIsMinimized(false)}
+        >
           <div className="flex items-center gap-2">
             <button
-              onClick={handleClose}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClose();
+              }}
               className="rounded-lg p-2 hover:bg-muted transition-colors"
               aria-label="بستن"
             >
               <X className="h-5 w-5 text-foreground" />
             </button>
             <button
-              onClick={() => setIsExpanded(!isExpanded)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMinimized(!isMinimized);
+              }}
               className="rounded-lg p-2 hover:bg-muted transition-colors"
-              aria-label={isExpanded ? "کوچک کردن" : "بزرگ کردن"}
+              aria-label={isMinimized ? "بازگرداندن" : "کوچک کردن"}
             >
-              {isExpanded ? (
-                <Minimize2 className="h-5 w-5 text-foreground" />
-              ) : (
-                <Maximize2 className="h-5 w-5 text-foreground" />
-              )}
+              <Minus className="h-5 w-5 text-foreground" />
             </button>
           </div>
           <h2 className="text-lg font-semibold text-foreground">ساخت سازمان</h2>
         </div>
 
-        {/* Step Indicator */}
-        {currentStep < 4 && (
-          <StepIndicator steps={steps} currentStep={currentStep} />
+        {/* Collapsible Content */}
+        {!isMinimized && (
+          <>
+            {/* Step Indicator */}
+            {currentStep < 4 && (
+              <StepIndicator steps={steps} currentStep={currentStep} />
+            )}
+
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-6 max-h-[calc(85vh-180px)]">
+              {currentStep === 1 && (
+                <Step1BaseInfo
+                  data={step1Data}
+                  onChange={setStep1Data}
+                  validation={step1Validation}
+                  onValidate={validateField}
+                />
+              )}
+              {currentStep === 2 && (
+                <Step2SupplementaryInfo
+                  data={step2Data}
+                  onChange={setStep2Data}
+                  tenantType={step1Data.tenantType}
+                />
+              )}
+              {currentStep === 3 && (
+                <Step3BrandContact
+                  data={step3Data}
+                  onChange={setStep3Data}
+                  fileErrors={fileErrors}
+                  onFileError={handleFileError}
+                />
+              )}
+              {currentStep === 4 && (
+                <Step4Confirmation
+                  formData={{
+                    step1: step1Data,
+                    step2: step2Data,
+                    step3: step3Data,
+                  }}
+                  confirmed={confirmed}
+                  onConfirmChange={setConfirmed}
+                  validationError={validationError}
+                />
+              )}
+            </div>
+
+            {/* Footer Actions */}
+            <div className="flex items-center justify-between border-t border-border px-6 py-4">
+              <div>
+                {currentStep > 1 && (
+                  <Button variant="tertiary" onClick={handlePrevious}>
+                    {currentStep === 4 ? "بازگشت" : "مرحله قبل"}
+                  </Button>
+                )}
+              </div>
+              <div>
+                {currentStep < 4 ? (
+                  <Button
+                    variant="default"
+                    onClick={handleNext}
+                    disabled={!canProceed()}
+                  >
+                    مرحله بعد
+                  </Button>
+                ) : (
+                  <Button
+                    variant="default"
+                    onClick={handleSubmit}
+                    disabled={!confirmed || isSubmitting}
+                  >
+                    {isSubmitting ? "در حال ارسال..." : "تایید ساخت"}
+                  </Button>
+                )}
+              </div>
+            </div>
+          </>
         )}
-
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6">
-          {currentStep === 1 && (
-            <Step1BaseInfo
-              data={step1Data}
-              onChange={setStep1Data}
-              validation={step1Validation}
-              onValidate={validateField}
-            />
-          )}
-          {currentStep === 2 && (
-            <Step2SupplementaryInfo
-              data={step2Data}
-              onChange={setStep2Data}
-              tenantType={step1Data.tenantType}
-            />
-          )}
-          {currentStep === 3 && (
-            <Step3BrandContact
-              data={step3Data}
-              onChange={setStep3Data}
-              fileErrors={fileErrors}
-              onFileError={handleFileError}
-            />
-          )}
-          {currentStep === 4 && (
-            <Step4Confirmation
-              formData={{
-                step1: step1Data,
-                step2: step2Data,
-                step3: step3Data,
-              }}
-              confirmed={confirmed}
-              onConfirmChange={setConfirmed}
-              validationError={validationError}
-            />
-          )}
-        </div>
-
-        {/* Footer Actions */}
-        <div className="flex items-center justify-between border-t border-border px-6 py-4">
-          <div>
-            {currentStep > 1 && (
-              <Button variant="tertiary" onClick={handlePrevious}>
-                {currentStep === 4 ? "بازگشت" : "مرحله قبل"}
-              </Button>
-            )}
-          </div>
-          <div>
-            {currentStep < 4 ? (
-              <Button
-                variant="default"
-                onClick={handleNext}
-                disabled={!canProceed()}
-              >
-                مرحله بعد
-              </Button>
-            ) : (
-              <Button
-                variant="default"
-                onClick={handleSubmit}
-                disabled={!confirmed || isSubmitting}
-              >
-                {isSubmitting ? "در حال ارسال..." : "تایید ساخت"}
-              </Button>
-            )}
-          </div>
-        </div>
       </div>
     </>
   );
