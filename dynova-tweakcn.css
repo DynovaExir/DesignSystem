@@ -1,0 +1,368 @@
+/**
+ * Dynova MDM — tweakcn Theme
+ * Version: 3.1
+ * Updated: 2026-02-25
+ *
+ * Compatible with tweakcn.com format. Maps Dynova v3.1 design tokens
+ * to shadcn/ui CSS variables. Components bind to semantic tokens only;
+ * primitives are exposed for theme-level overrides.
+ */
+
+:root {
+  /* ============================================================
+   * Collection 1 — Primitives (raw token values)
+   * Components must NOT reference these directly.
+   * ============================================================ */
+
+  --primary-100: oklch(0.9392 0.0218 230.5480);
+  --primary-300: oklch(0.7224 0.0882 233.2618);
+  --primary-500: oklch(0.4528 0.0932 239.3717);
+  --primary-700: oklch(0.3334 0.0687 240.8240);
+  --primary-900: oklch(0.2247 0.0418 239.4563);
+
+  --neutral-100: oklch(0.9670 0.0029 264.5419);
+  --neutral-300: oklch(0.8717 0.0093 258.3382);
+  --neutral-500: oklch(0.5510 0.0234 264.3637);
+  --neutral-700: oklch(0.3729 0.0306 259.7328);
+  --neutral-900: oklch(0.2101 0.0318 264.6645);
+
+  --success-500: oklch(0.4987 0.1370 148.5503);
+  --danger-500: oklch(0.5338 0.1963 14.8226);
+  --warning-500: oklch(0.6204 0.1256 72.1985);
+  --info-500: oklch(0.4491 0.2306 289.6787);
+
+  /* ============================================================
+   * Collection 2 — Semantic (shadcn/ui mappings)
+   * Components bind to these.
+   * ============================================================ */
+
+  /* Surface */
+  --background: oklch(0.9670 0.0029 264.5419);
+  --foreground: oklch(0.2101 0.0318 264.6645);
+
+  --card: oklch(1.0000 0 0);
+  --card-foreground: oklch(0.2101 0.0318 264.6645);
+
+  --popover: oklch(1.0000 0 0);
+  --popover-foreground: oklch(0.2101 0.0318 264.6645);
+
+  /* Interactive — Primary */
+  --primary: oklch(0.4528 0.0932 239.3717);
+  --primary-foreground: oklch(1.0000 0 0);
+
+  /* Interactive — Secondary */
+  --secondary: oklch(0.9392 0.0218 230.5480);
+  --secondary-foreground: oklch(0.4528 0.0932 239.3717);
+
+  /* Muted (subtle backgrounds, supporting text) */
+  --muted: oklch(0.9670 0.0029 264.5419);
+  --muted-foreground: oklch(0.5510 0.0234 264.3637);
+
+  /* Accent (hover states, subtle interactive surfaces) */
+  --accent: oklch(0.9670 0.0029 264.5419);
+  --accent-foreground: oklch(0.2101 0.0318 264.6645);
+
+  /* Status — Destructive */
+  --destructive: oklch(0.5338 0.1963 14.8226);
+  --destructive-foreground: oklch(1.0000 0 0);
+
+  /* Borders & Inputs */
+  --border: oklch(0.8717 0.0093 258.3382);
+  --border-strong: oklch(0.3729 0.0306 259.7328);
+  --border-focus: oklch(0.4528 0.0932 239.3717);
+  --input: oklch(0.3729 0.0306 259.7328);
+  --ring: oklch(0.4528 0.0932 239.3717);
+
+  /* Status semantic */
+  --success: oklch(0.4987 0.1370 148.5503);
+  --success-foreground: oklch(1.0000 0 0);
+  --warning: oklch(0.6204 0.1256 72.1985);
+  --warning-foreground: oklch(1.0000 0 0);
+  --info: oklch(0.4491 0.2306 289.6787);
+  --info-foreground: oklch(1.0000 0 0);
+
+  /* Selection */
+  --selection-selected: oklch(0.9392 0.0218 230.5480);
+  --selection-highlighted: oklch(0.9682 0.0254 78.9209);
+
+  /* Chart / Data Visualization */
+  --chart-1: oklch(0.4528 0.0932 239.3717);
+  --chart-2: oklch(0.7224 0.0882 233.2618);
+  --chart-3: oklch(0.7900 0.1500 290.0000);
+  --chart-4: oklch(0.5510 0.0234 264.3637);
+  --chart-5: oklch(0.4987 0.1370 148.5503);
+
+  /* Sidebar — light theme per v3.1 */
+  --sidebar: oklch(1.0000 0 0);
+  --sidebar-foreground: oklch(0.2101 0.0318 264.6645);
+  --sidebar-primary: oklch(0.4528 0.0932 239.3717);
+  --sidebar-primary-foreground: oklch(1.0000 0 0);
+  --sidebar-accent: oklch(0.9670 0.0029 264.5419);
+  --sidebar-accent-foreground: oklch(0.2101 0.0318 264.6645);
+  --sidebar-border: oklch(0.8717 0.0093 258.3382);
+  --sidebar-ring: oklch(0.4528 0.0932 239.3717);
+
+  /* ============================================================
+   * Typography
+   * ============================================================ */
+
+  --font-sans: "Yekan Bakh FaNum", system-ui, sans-serif;
+  --font-serif: "Yekan Bakh FaNum", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ============================================================
+   * Border Radius
+   * Base value drives shadcn calc derivations.
+   * ============================================================ */
+
+  --radius: 0.75rem; /* 12px = radius/md */
+  --radius-none: 0px;
+  --radius-sm: calc(var(--radius) - 8px);   /* 4px */
+  --radius-md: var(--radius);                /* 12px */
+  --radius-lg: calc(var(--radius) + 8px);    /* 20px */
+  --radius-xl: calc(var(--radius) + 20px);   /* 32px */
+  --radius-full: 999px;
+
+  /* ============================================================
+   * Shadows — single-layer, max opacity 12%
+   * ============================================================ */
+
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px 0 rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+
+  /* shadcn aliases (mapped to v3.1 levels) */
+  --shadow: var(--shadow-sm);
+  --shadow-2xl: var(--shadow-lg);
+  --shadow-3xl: var(--shadow-lg);
+
+  /* ============================================================
+   * Spacing
+   * ============================================================ */
+
+  --spacing: 0.25rem; /* 4px base unit */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Layout offsets (outside spacing scale) */
+  --layout-offset-lg: 40px;
+  --layout-offset-md: 20px;
+
+  /* ============================================================
+   * Border Width
+   * ============================================================ */
+
+  --border-width-none: 0px;
+  --border-width-default: 1px;
+  --border-width-emphasis: 2px;
+  --border-width-accent: 4px;
+
+  /* ============================================================
+   * Opacity
+   * ============================================================ */
+
+  --opacity-0: 0;
+  --opacity-hover: 0.08;
+  --opacity-pressed: 0.16;
+  --opacity-disabled: 0.4;
+  --opacity-scrim-subtle: 0.3;
+  --opacity-skeleton: 0.6;
+  --opacity-scrim: 0.5;
+
+  /* ============================================================
+   * Tracking
+   * ============================================================ */
+
+  --tracking-normal: 0em;
+}
+
+.dark {
+  /* ============================================================
+   * Dark mode
+   * Architectural placeholder. v3.1 explicitly enables dark mode
+   * via the two-collection model but does not specify final values.
+   * Below are inverted neutrals plus retained primitive colors.
+   * Refine when dark mode is formally specified.
+   * ============================================================ */
+
+  /* Surface */
+  --background: oklch(0.2101 0.0318 264.6645);
+  --foreground: oklch(0.9670 0.0029 264.5419);
+
+  --card: oklch(0.2101 0.0318 264.6645);
+  --card-foreground: oklch(0.9670 0.0029 264.5419);
+
+  --popover: oklch(0.2101 0.0318 264.6645);
+  --popover-foreground: oklch(0.9670 0.0029 264.5419);
+
+  /* Interactive — Primary */
+  --primary: oklch(0.7224 0.0882 233.2618);
+  --primary-foreground: oklch(0.2101 0.0318 264.6645);
+
+  /* Interactive — Secondary */
+  --secondary: oklch(0.3334 0.0687 240.8240);
+  --secondary-foreground: oklch(0.9392 0.0218 230.5480);
+
+  /* Muted */
+  --muted: oklch(0.3729 0.0306 259.7328);
+  --muted-foreground: oklch(0.8717 0.0093 258.3382);
+
+  /* Accent */
+  --accent: oklch(0.3729 0.0306 259.7328);
+  --accent-foreground: oklch(0.9670 0.0029 264.5419);
+
+  /* Status — Destructive */
+  --destructive: oklch(0.5338 0.1963 14.8226);
+  --destructive-foreground: oklch(1.0000 0 0);
+
+  /* Borders & Inputs */
+  --border: oklch(0.3729 0.0306 259.7328);
+  --border-strong: oklch(0.8717 0.0093 258.3382);
+  --border-focus: oklch(0.7224 0.0882 233.2618);
+  --input: oklch(0.3729 0.0306 259.7328);
+  --ring: oklch(0.7224 0.0882 233.2618);
+
+  /* Status semantic */
+  --success: oklch(0.4987 0.1370 148.5503);
+  --success-foreground: oklch(1.0000 0 0);
+  --warning: oklch(0.6204 0.1256 72.1985);
+  --warning-foreground: oklch(1.0000 0 0);
+  --info: oklch(0.4491 0.2306 289.6787);
+  --info-foreground: oklch(1.0000 0 0);
+
+  /* Chart */
+  --chart-1: oklch(0.7224 0.0882 233.2618);
+  --chart-2: oklch(0.4528 0.0932 239.3717);
+  --chart-3: oklch(0.7900 0.1500 290.0000);
+  --chart-4: oklch(0.8717 0.0093 258.3382);
+  --chart-5: oklch(0.4987 0.1370 148.5503);
+
+  /* Sidebar */
+  --sidebar: oklch(0.2101 0.0318 264.6645);
+  --sidebar-foreground: oklch(0.9670 0.0029 264.5419);
+  --sidebar-primary: oklch(0.7224 0.0882 233.2618);
+  --sidebar-primary-foreground: oklch(0.2101 0.0318 264.6645);
+  --sidebar-accent: oklch(0.3729 0.0306 259.7328);
+  --sidebar-accent-foreground: oklch(0.9670 0.0029 264.5419);
+  --sidebar-border: oklch(0.3729 0.0306 259.7328);
+  --sidebar-ring: oklch(0.7224 0.0882 233.2618);
+
+  /* Typography */
+  --font-sans: "Yekan Bakh FaNum", system-ui, sans-serif;
+  --font-serif: "Yekan Bakh FaNum", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Radius */
+  --radius: 0.75rem;
+
+  /* Shadows — slightly stronger in dark mode for separation */
+  --shadow-none: none;
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.20);
+  --shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 16px 0 rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0 8px 32px 0 rgba(0, 0, 0, 0.40);
+  --shadow: var(--shadow-sm);
+  --shadow-2xl: var(--shadow-lg);
+  --shadow-3xl: var(--shadow-lg);
+
+  /* Tracking */
+  --tracking-normal: 0em;
+}
+
+@theme inline {
+  /* Surface */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Interactive */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Status */
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  /* Borders */
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-focus: var(--border-focus);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Selection */
+  --color-selection-selected: var(--selection-selected);
+  --color-selection-highlighted: var(--selection-highlighted);
+
+  /* Chart */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  /* Radius */
+  --radius-none: 0px;
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 8px);
+  --radius-xl: calc(var(--radius) + 20px);
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-none: var(--shadow-none);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow: var(--shadow);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-3xl: var(--shadow-3xl);
+
+  /* Tracking */
+  --tracking-normal: var(--tracking-normal);
+}
+
+body {
+  letter-spacing: var(--tracking-normal);
+}

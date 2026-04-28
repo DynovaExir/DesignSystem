@@ -1,0 +1,497 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$metadata": {
+    "name": "Dynova Design System",
+    "version": "3.1",
+    "updated": "2026-02-25",
+    "description": "W3C DTCG-format design tokens for Dynova MDM. Two-collection architecture: primitives → semantic. Components bind to semantic only.",
+    "tokenSetOrder": ["primitives", "semantic"]
+  },
+  "primitives": {
+    "color": {
+      "primary": {
+        "100": { "$type": "color", "$value": "#ddeef7", "$description": "Primary subtle background" },
+        "300": { "$type": "color", "$value": "#6aafd4", "$description": "Primary decorative, secondary" },
+        "500": { "$type": "color", "$value": "#155c84", "$description": "Primary main / default — 6.3:1 on white (WCAG AA)" },
+        "700": { "$type": "color", "$value": "#0c3a56", "$description": "Primary hover, emphasis" },
+        "900": { "$type": "color", "$value": "#061e2d", "$description": "Primary pressed, darkest" }
+      },
+      "neutral": {
+        "100": { "$type": "color", "$value": "#f3f4f6", "$description": "Neutral subtle background" },
+        "300": { "$type": "color", "$value": "#d1d5db", "$description": "Neutral decorative borders, dividers" },
+        "500": { "$type": "color", "$value": "#6b7280", "$description": "Neutral secondary text — 4.8:1 on white (WCAG AA)" },
+        "700": { "$type": "color", "$value": "#374151", "$description": "Neutral strong borders, icons — 9.7:1 on white (WCAG AAA)" },
+        "900": { "$type": "color", "$value": "#111827", "$description": "Neutral primary text — 16.8:1 on white (WCAG AAA)" }
+      },
+      "success": {
+        "100": { "$type": "color", "$value": "#e9f9ef", "$description": "Success background" },
+        "300": { "$type": "color", "$value": "#5ddc89", "$description": "Success decorative" },
+        "500": { "$type": "color", "$value": "#0e7732", "$description": "Success main — 6.1:1 on white (WCAG AA)" },
+        "700": { "$type": "color", "$value": "#094f21", "$description": "Success hover, emphasis" },
+        "900": { "$type": "color", "$value": "#052a12", "$description": "Success pressed, darkest" }
+      },
+      "danger": {
+        "100": { "$type": "color", "$value": "#ffe9f0", "$description": "Danger background" },
+        "300": { "$type": "color", "$value": "#ff85a8", "$description": "Danger decorative" },
+        "500": { "$type": "color", "$value": "#c41f47", "$description": "Danger main — 5.1:1 on white (WCAG AA)" },
+        "700": { "$type": "color", "$value": "#5f0e22", "$description": "Danger hover, emphasis" },
+        "900": { "$type": "color", "$value": "#3b0815", "$description": "Danger pressed, darkest" }
+      },
+      "info": {
+        "100": { "$type": "color", "$value": "#f3eefe", "$description": "Info background" },
+        "300": { "$type": "color", "$value": "#bda4f8", "$description": "Info decorative" },
+        "500": { "$type": "color", "$value": "#5c1fc8", "$description": "Info main — 7.2:1 on white (WCAG AAA)" },
+        "700": { "$type": "color", "$value": "#2f106b", "$description": "Info hover, emphasis" },
+        "900": { "$type": "color", "$value": "#1c0942", "$description": "Info pressed, darkest" }
+      },
+      "warning": {
+        "100": { "$type": "color", "$value": "#fef3e2", "$description": "Warning background" },
+        "300": { "$type": "color", "$value": "#fbbf4a", "$description": "Warning decorative" },
+        "500": { "$type": "color", "$value": "#b47818", "$description": "Warning main — 4.6:1 on white (WCAG AA)" },
+        "700": { "$type": "color", "$value": "#6d4a0f", "$description": "Warning hover, emphasis" },
+        "900": { "$type": "color", "$value": "#3a2708", "$description": "Warning pressed, darkest" }
+      }
+    }
+  },
+  "semantic": {
+    "color": {
+      "bg": {
+        "default": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.100}",
+          "$description": "App background, page canvas"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "#ffffff",
+          "$description": "Cards, panels, table rows, sidebar, header"
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.300}",
+          "$description": "Skeleton, divider as bg, disabled fills"
+        },
+        "elevated": {
+          "$type": "color",
+          "$value": "#ffffff",
+          "$description": "Modals, dropdowns. Same as subtle in light mode; will diverge in dark mode."
+        },
+        "overlay": {
+          "$type": "color",
+          "$value": "rgba(17, 24, 39, 0.5)",
+          "$description": "Modal scrim (reserved). neutral/900 at opacity/scrim."
+        }
+      },
+      "text": {
+        "default": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.900}",
+          "$description": "Body, headings, labels — 16.8:1 on white (AAA)"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.500}",
+          "$description": "Meta, timestamps, captions — 4.8:1 on white (AA)"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.300}",
+          "$description": "Disabled labels — 1.8:1 (WCAG exempt for disabled controls). Use only on color/bg/subtle."
+        },
+        "inverse": {
+          "$type": "color",
+          "$value": "#ffffff",
+          "$description": "Text on dark or filled interactive backgrounds"
+        },
+        "link": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.500}",
+          "$description": "Inline links — 6.3:1 on white (AA)"
+        }
+      },
+      "interactive": {
+        "default": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.500}",
+          "$description": "Primary button fill, default interactive state"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.700}",
+          "$description": "Primary button hover"
+        },
+        "active": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.900}",
+          "$description": "Primary button pressed"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.100}",
+          "$description": "Ghost button background, chip"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.500}",
+          "$description": "Focus ring color — 6.3:1 on white (AA)"
+        }
+      },
+      "border": {
+        "default": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.300}",
+          "$description": "Cards, dividers, decorative borders — 1.6:1 (use only when border is supplementary)"
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.700}",
+          "$description": "Standalone input borders, tertiary button borders, any border that is the sole boundary indicator — 9.7:1 on white (AAA), meets WCAG 1.4.11"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.500}",
+          "$description": "Focused input ring — 6.3:1 on white (AA)"
+        }
+      },
+      "icon": {
+        "default": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.700}",
+          "$description": "Standalone icons, nav — 9.7:1 on white (AAA)"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.500}",
+          "$description": "Supporting icons — 4.8:1 on white (AA)"
+        },
+        "interactive": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.500}",
+          "$description": "Clickable icons — 6.3:1 on white (AA)"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.300}",
+          "$description": "Disabled icons (WCAG exempt for disabled controls)"
+        }
+      },
+      "status": {
+        "success": {
+          "$type": "color",
+          "$value": "{primitives.color.success.500}",
+          "$description": "Success text, badge, icon"
+        },
+        "success-bg": {
+          "$type": "color",
+          "$value": "{primitives.color.success.100}",
+          "$description": "Success alert background"
+        },
+        "danger": {
+          "$type": "color",
+          "$value": "{primitives.color.danger.500}",
+          "$description": "Error text, destructive action"
+        },
+        "danger-bg": {
+          "$type": "color",
+          "$value": "{primitives.color.danger.100}",
+          "$description": "Error alert background"
+        },
+        "info": {
+          "$type": "color",
+          "$value": "{primitives.color.info.500}",
+          "$description": "Info text, badge"
+        },
+        "info-bg": {
+          "$type": "color",
+          "$value": "{primitives.color.info.100}",
+          "$description": "Info alert background"
+        },
+        "warning": {
+          "$type": "color",
+          "$value": "{primitives.color.warning.500}",
+          "$description": "Warning text, badge, icon"
+        },
+        "warning-bg": {
+          "$type": "color",
+          "$value": "{primitives.color.warning.100}",
+          "$description": "Warning alert background"
+        }
+      },
+      "dataviz": {
+        "1": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.500}",
+          "$description": "Primary data series in charts"
+        },
+        "2": {
+          "$type": "color",
+          "$value": "{primitives.color.primary.300}",
+          "$description": "Secondary data series in charts"
+        },
+        "3": {
+          "$type": "color",
+          "$value": "{primitives.color.info.300}",
+          "$description": "Tertiary data series in charts"
+        },
+        "4": {
+          "$type": "color",
+          "$value": "{primitives.color.neutral.500}",
+          "$description": "Background or disabled data series"
+        }
+      },
+      "selection": {
+        "selected": {
+          "$type": "color",
+          "$value": "#ddeef7",
+          "$description": "Selected row, active nav background"
+        },
+        "highlighted": {
+          "$type": "color",
+          "$value": "#fef3e2",
+          "$description": "Search match, find-in-page highlight"
+        }
+      }
+    },
+    "typography": {
+      "fontFamily": {
+        "sans": {
+          "$type": "fontFamily",
+          "$value": ["Yekan Bakh FaNum", "system-ui", "sans-serif"],
+          "$description": "Single font family. Supports Persian script and Persian-style numerals natively."
+        }
+      },
+      "fontWeight": {
+        "regular": { "$type": "fontWeight", "$value": 400, "$description": "Default body text" },
+        "semibold": { "$type": "fontWeight", "$value": 600, "$description": "Emphasis, headings, labels" }
+      },
+      "lineHeight": {
+        "display": { "$type": "number", "$value": 1.25, "$description": "125% — for display, heading, and dense titles" },
+        "body": { "$type": "number", "$value": 1.5, "$description": "150% — for body, label, and reading text" }
+      },
+      "style": {
+        "display-lg": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "32px",
+            "fontWeight": 600,
+            "lineHeight": 1.25
+          },
+          "$description": "Hero titles"
+        },
+        "display-md": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "28px",
+            "fontWeight": 600,
+            "lineHeight": 1.25
+          },
+          "$description": "Page titles"
+        },
+        "display-sm": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "24px",
+            "fontWeight": 600,
+            "lineHeight": 1.25
+          },
+          "$description": "Section display"
+        },
+        "heading-lg": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "20px",
+            "fontWeight": 600,
+            "lineHeight": 1.25
+          },
+          "$description": "Primary headings, bottom sheet titles"
+        },
+        "heading-sm": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "18px",
+            "fontWeight": 600,
+            "lineHeight": 1.25
+          },
+          "$description": "Secondary headings"
+        },
+        "body-lg-semibold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "16px",
+            "fontWeight": 600,
+            "lineHeight": 1.5
+          },
+          "$description": "Emphasized body"
+        },
+        "body-lg-regular": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "16px",
+            "fontWeight": 400,
+            "lineHeight": 1.5
+          },
+          "$description": "Body text"
+        },
+        "body-sm-semibold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "14px",
+            "fontWeight": 600,
+            "lineHeight": 1.5
+          },
+          "$description": "Button text, active labels, nav items"
+        },
+        "body-sm-regular": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "14px",
+            "fontWeight": 400,
+            "lineHeight": 1.5
+          },
+          "$description": "Secondary body"
+        },
+        "label-lg-semibold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "12px",
+            "fontWeight": 600,
+            "lineHeight": 1.5
+          },
+          "$description": "Form labels, tags"
+        },
+        "label-lg-regular": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "12px",
+            "fontWeight": 400,
+            "lineHeight": 1.5
+          },
+          "$description": "Supporting labels, tooltips"
+        },
+        "label-sm-semibold": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{semantic.typography.fontFamily.sans}",
+            "fontSize": "10px",
+            "fontWeight": 600,
+            "lineHeight": 1.5
+          },
+          "$description": "Captions, badges. Minimum size in the system."
+        }
+      }
+    },
+    "space": {
+      "0": { "$type": "dimension", "$value": "0px", "$description": "Explicit zero" },
+      "1": { "$type": "dimension", "$value": "4px", "$description": "Component internal — icon-to-label, badge padding" },
+      "2": { "$type": "dimension", "$value": "8px", "$description": "Component internal — input vertical padding, list gap" },
+      "3": { "$type": "dimension", "$value": "12px", "$description": "Component internal — button vertical padding" },
+      "4": { "$type": "dimension", "$value": "16px", "$description": "Component internal — button horizontal padding, card inner, bottom sheet padding" },
+      "5": { "$type": "dimension", "$value": "24px", "$description": "Between components — form groups, card header, column gutters" },
+      "6": { "$type": "dimension", "$value": "32px", "$description": "Between components — panel sections, modal padding" },
+      "7": { "$type": "dimension", "$value": "48px", "$description": "Layout — between major page sections" },
+      "8": { "$type": "dimension", "$value": "64px", "$description": "Layout — page top padding, hero spacing" },
+      "9": { "$type": "dimension", "$value": "96px", "$description": "Layout — max layout margin, full-bleed" }
+    },
+    "layout": {
+      "offset": {
+        "lg": {
+          "$type": "dimension",
+          "$value": "40px",
+          "$description": "Content margin at 1440px viewport. Layout-specific — outside the spacing scale."
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "20px",
+          "$description": "Content margin at 1280px viewport. Layout-specific — outside the spacing scale."
+        }
+      }
+    },
+    "border": {
+      "width": {
+        "none": { "$type": "dimension", "$value": "0px", "$description": "Ghost elements, borderless" },
+        "default": { "$type": "dimension", "$value": "1px", "$description": "Inputs, cards, dividers, sidebar edge" },
+        "emphasis": { "$type": "dimension", "$value": "2px", "$description": "Focus rings, selected states" },
+        "accent": { "$type": "dimension", "$value": "4px", "$description": "Alert strips, active sidebar indicator" }
+      }
+    },
+    "radius": {
+      "none": { "$type": "dimension", "$value": "0px", "$description": "Dividers, full-bleed elements" },
+      "sm": { "$type": "dimension", "$value": "4px", "$description": "Tooltips, small tags" },
+      "md": { "$type": "dimension", "$value": "12px", "$description": "Inputs, dropdowns" },
+      "lg": { "$type": "dimension", "$value": "20px", "$description": "Cards, modals, sidebars, bottom sheet top corners" },
+      "xl": { "$type": "dimension", "$value": "32px", "$description": "Hero panels, large page containers" },
+      "full": { "$type": "dimension", "$value": "999px", "$description": "Buttons, chips, badges, pills, nav items" }
+    },
+    "shadow": {
+      "none": {
+        "$type": "shadow",
+        "$value": "none",
+        "$description": "Flat, explicitly removes elevation"
+      },
+      "xs": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.06)",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        "$description": "Inputs, small buttons"
+      },
+      "sm": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.08)",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px"
+        },
+        "$description": "Default card elevation"
+      },
+      "md": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.10)",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "16px",
+          "spread": "0px"
+        },
+        "$description": "Dropdowns, popovers, minimized bottom sheet bar"
+      },
+      "lg": {
+        "$type": "shadow",
+        "$value": {
+          "color": "rgba(0, 0, 0, 0.12)",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "32px",
+          "spread": "0px"
+        },
+        "$description": "Bottom sheets (open state), drawers"
+      }
+    },
+    "opacity": {
+      "0": { "$type": "number", "$value": 0, "$description": "Invisible, transition start/end" },
+      "hover": { "$type": "number", "$value": 0.08, "$description": "Hover overlay on filled components (8%)" },
+      "pressed": { "$type": "number", "$value": 0.16, "$description": "Pressed overlay (16%)" },
+      "disabled": { "$type": "number", "$value": 0.4, "$description": "Entire disabled component frame (40%)" },
+      "scrim-subtle": { "$type": "number", "$value": 0.3, "$description": "Bottom sheet backdrop (30%)" },
+      "skeleton": { "$type": "number", "$value": 0.6, "$description": "Skeleton loading (60%)" },
+      "scrim": { "$type": "number", "$value": 0.5, "$description": "Full modal backdrop, reserved (50%)" }
+    }
+  }
+}
