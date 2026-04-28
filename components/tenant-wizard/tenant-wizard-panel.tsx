@@ -249,11 +249,11 @@ export function TenantWizardPanel({ isOpen, onClose }: TenantWizardPanelProps) {
       {/* Bottom Sheet */}
       <div
         className={cn(
-          "fixed left-1/2 -translate-x-1/2 z-50 flex flex-col bg-card shadow-xl transition-all duration-300 ease-out",
-          "w-full max-w-[720px] rounded-t-2xl",
+          "fixed left-1/2 -translate-x-1/2 z-50 flex flex-col bg-card shadow-2xl transition-all duration-300 ease-out",
+          "w-[calc(100%-32px)] max-w-[720px] rounded-2xl",
           isMinimized 
-            ? "bottom-0 h-[56px]" 
-            : "bottom-0 max-h-[85vh]"
+            ? "bottom-4 h-[56px]" 
+            : "bottom-4 max-h-[calc(85vh-32px)]"
         )}
         style={{
           height: isMinimized ? "56px" : "auto",
@@ -262,8 +262,8 @@ export function TenantWizardPanel({ isOpen, onClose }: TenantWizardPanelProps) {
         {/* Header */}
         <div 
           className={cn(
-            "flex items-center justify-between border-b border-border px-4 py-3 rounded-t-2xl cursor-pointer",
-            isMinimized && "border-b-0"
+            "flex items-center justify-between border-b border-border px-4 py-3 cursor-pointer",
+            isMinimized ? "rounded-2xl border-b-0" : "rounded-t-2xl"
           )}
           onClick={() => isMinimized && setIsMinimized(false)}
         >
@@ -301,7 +301,7 @@ export function TenantWizardPanel({ isOpen, onClose }: TenantWizardPanelProps) {
             )}
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6 max-h-[calc(85vh-180px)]">
+            <div className="flex-1 overflow-y-auto p-6 max-h-[calc(85vh-212px)]">
               {currentStep === 1 && (
                 <Step1BaseInfo
                   data={step1Data}
