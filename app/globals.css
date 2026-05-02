@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@import "../dynova-tweakcn.css";
+
+/* Yekan Bakh FaNum Font Faces */
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base Styles */
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground font-sans antialiased;
+}
+
+/* Focus ring styles per Dynova spec: 2px white gap + 2px primary ring */
+.focus-ring {
+  @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+/* RTL-aware utility for icons that need mirroring */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Skeleton animation */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-skeleton {
+  animation: skeleton-pulse 2s ease-in-out infinite;
+}

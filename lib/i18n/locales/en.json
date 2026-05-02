@@ -1,0 +1,27 @@
+{
+  "login": {
+    "title": "Sign in to Dynova",
+    "subtitle": "Unified Device Management",
+    "button": "Sign in with Enterprise Account",
+    "loading": "Redirecting...",
+    "loggedOut": "You have been logged out successfully",
+    "processing": "Processing..."
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "welcomeMessage": "You have successfully signed in",
+    "logout": "Sign out"
+  },
+  "errors": {
+    "stateMismatch": "Security error: Invalid state parameter",
+    "tokenExchange": "Failed to exchange authorization code",
+    "generic": "Something went wrong. Please try again",
+    "tryAgain": "Try again",
+    "backToLogin": "Back to login"
+  },
+  "a11y": {
+    "switchLanguage": "Switch language to Persian",
+    "closeAlert": "Close message",
+    "loading": "Loading"
+  }
+}
