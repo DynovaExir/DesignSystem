@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@import "../dynova-tweakcn.css";
+
+/* ============================================================
+ * Yekan Bakh FaNum Font Face Declarations
+ * ============================================================ */
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Regular.woff2") format("woff2"),
+    url("/fonts/YekanBakhFaNum-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-SemiBold.woff2") format("woff2"),
+    url("/fonts/YekanBakhFaNum-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Bold.woff2") format("woff2"),
+    url("/fonts/YekanBakhFaNum-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+ * Dynova Design System Extended Tokens
+ * Additional primitive and semantic tokens for auth UI
+ * ============================================================ */
+
+:root {
+  /* Extended primitive colors needed per spec */
+  --primary-600: oklch(0.39 0.08 239);
+  --primary-800: oklch(0.28 0.055 240);
+  --neutral-50: oklch(0.985 0.001 264);
+  --neutral-200: oklch(0.92 0.006 258);
+  --neutral-600: oklch(0.45 0.028 262);
+
+  /* Status semantic backgrounds and text */
+  --success-100: oklch(0.96 0.03 148);
+  --success-700: oklch(0.38 0.1 148);
+  --danger-100: oklch(0.94 0.04 15);
+  --danger-700: oklch(0.35 0.12 15);
+  --warning-100: oklch(0.96 0.04 72);
+  --warning-700: oklch(0.5 0.1 72);
+  --info-100: oklch(0.95 0.04 290);
+  --info-700: oklch(0.35 0.15 290);
+
+  /* Text semantic tokens */
+  --text-primary: var(--neutral-700);
+  --text-secondary: var(--neutral-500);
+  --text-disabled: oklch(0.72 0.015 262);
+  --text-link: var(--primary-500);
+
+  /* Border semantic */
+  --border-default: var(--neutral-300);
+}
+
+@theme inline {
+  /* Extended color tokens */
+  --color-primary-100: var(--primary-100);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-900: var(--neutral-900);
+
+  --color-success-100: var(--success-100);
+  --color-success-500: var(--success);
+  --color-success-700: var(--success-700);
+
+  --color-danger-100: var(--danger-100);
+  --color-danger-500: var(--destructive);
+  --color-danger-700: var(--danger-700);
+
+  --color-warning-100: var(--warning-100);
+  --color-warning-500: var(--warning);
+  --color-warning-700: var(--warning-700);
+
+  --color-info-100: var(--info-100);
+  --color-info-500: var(--info);
+  --color-info-700: var(--info-700);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-link: var(--text-link);
+
+  --color-border-default: var(--border-default);
+}
+
+/* ============================================================
+ * Typography Utilities
+ * ============================================================ */
+
+.text-display-xl {
+  font-size: 2rem; /* 32px */
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.text-display-lg {
+  font-size: 1.75rem; /* 28px */
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.text-heading-lg {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.text-heading-sm {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.text-body-lg {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.text-body-md {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.text-body-sm {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.text-label-sm {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.text-label-xs {
+  font-size: 0.625rem; /* 10px */
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* ============================================================
+ * Base Styles
+ * ============================================================ */
+
+* {
+  @apply border-border-default;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+/* Focus ring styles */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+}
+
+/* RTL-safe icon mirroring */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
