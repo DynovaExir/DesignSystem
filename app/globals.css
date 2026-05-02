@@ -1,0 +1,158 @@
+@import "tailwindcss";
+@import "../dynova-tweakcn.css";
+
+/* Yekan Bakh FaNum font for Persian with Farsi numerals */
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  font-style: normal;
+  font-weight: 100;
+  src: url("/fonts/YekanBakhFaNum-Thin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/YekanBakhFaNum-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/YekanBakhFaNum-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/YekanBakhFaNum-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/YekanBakhFaNum-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/fonts/YekanBakhFaNum-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/fonts/YekanBakhFaNum-Black.woff2") format("woff2");
+}
+
+/* Base styles */
+html {
+  font-family: var(--font-sans);
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-feature-settings: "ss01", "ss02", "cv01";
+}
+
+/* Focus ring utility for logical properties */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+}
+
+/* RTL-aware transitions */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Custom scrollbar for consistent look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground;
+}
+
+/* Monospace hint for tenant_name field */
+.font-mono-hint {
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, "Cascadia Mono", monospace;
+}
+
+/* Animation for validation indicators */
+@keyframes pulse-check {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-check {
+  animation: pulse-check 1.5s ease-in-out infinite;
+}
+
+/* Wizard step transitions */
+.wizard-step-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+[dir="rtl"] .wizard-step-enter {
+  transform: translateX(-20px);
+}
+
+.wizard-step-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.wizard-step-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.wizard-step-exit-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 200ms ease-in, transform 200ms ease-in;
+}
+
+[dir="rtl"] .wizard-step-exit-active {
+  transform: translateX(20px);
+}
+
+/* Upload tile drag states */
+.upload-tile-dragging {
+  @apply border-primary bg-primary/5;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
