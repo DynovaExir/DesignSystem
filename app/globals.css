@@ -111,6 +111,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-100: var(--primary-100);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -139,6 +140,19 @@
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 8px);
   --radius-xl: calc(var(--radius) + 20px);
+  
+  /* Semantic colors */
+  --color-success-100: var(--success-100);
+  --color-success-500: var(--success-500);
+  --color-danger-100: var(--danger-100);
+  --color-danger-500: var(--danger-500);
+  --color-warning-100: var(--warning-100);
+  --color-warning-500: var(--warning-500);
+  --color-info-100: var(--info-100);
+  --color-info-500: var(--info-500);
+
+  /* Typography */
+  --font-sans: "Yekan Bakh", system-ui, sans-serif;
 }
 
 body {
