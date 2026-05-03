@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Yekan Bakh FaNum Font Face */
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yekan Bakh FaNum";
+  src: url("/fonts/YekanBakhFaNum-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* === Collection 1: Primitives === */
+  --primary-100: #ddeef7;
+  --primary-300: #6aafd4;
+  --primary-500: #155c84;
+  --primary-700: #0c3a56;
+  --primary-900: #061e2d;
+
+  --neutral-100: #f3f4f6;
+  --neutral-300: #d1d5db;
+  --neutral-500: #6b7280;
+  --neutral-700: #374151;
+  --neutral-900: #111827;
+
+  --success-100: #e9f9ef;
+  --success-300: #5ddc89;
+  --success-500: #0e7732;
+  --success-700: #094f21;
+  --success-900: #052a12;
+
+  --danger-100: #ffe9f0;
+  --danger-300: #ff85a8;
+  --danger-500: #c41f47;
+  --danger-700: #5f0e22;
+  --danger-900: #3b0815;
+
+  --info-100: #f3eefe;
+  --info-300: #bda4f8;
+  --info-500: #5c1fc8;
+  --info-700: #2f106b;
+  --info-900: #1c0942;
+
+  --warning-100: #fef3e2;
+  --warning-300: #fbbf4a;
+  --warning-500: #b47818;
+  --warning-700: #6d4a0f;
+  --warning-900: #3a2708;
+
+  /* === Collection 2: Semantic === */
+  /* Background */
+  --color-bg-default: var(--neutral-100);
+  --color-bg-subtle: #ffffff;
+  --color-bg-muted: var(--neutral-300);
+  --color-bg-elevated: #ffffff;
+  --color-bg-overlay: rgba(17, 24, 39, 0.5);
+
+  /* Text */
+  --color-text-default: var(--neutral-900);
+  --color-text-subtle: var(--neutral-500);
+  --color-text-disabled: var(--neutral-300);
+  --color-text-inverse: #ffffff;
+  --color-text-link: var(--primary-500);
+
+  /* Interactive */
+  --color-interactive-default: var(--primary-500);
+  --color-interactive-hover: var(--primary-700);
+  --color-interactive-active: var(--primary-900);
+  --color-interactive-subtle: var(--primary-100);
+  --color-interactive-focus: var(--primary-500);
+
+  /* Border */
+  --color-border-default: var(--neutral-300);
+  --color-border-strong: var(--neutral-700);
+  --color-border-focus: var(--primary-500);
+
+  /* Icon */
+  --color-icon-default: var(--neutral-700);
+  --color-icon-subtle: var(--neutral-500);
+  --color-icon-interactive: var(--primary-500);
+  --color-icon-disabled: var(--neutral-300);
+
+  /* Status */
+  --color-status-success: var(--success-500);
+  --color-status-success-bg: var(--success-100);
+  --color-status-danger: var(--danger-500);
+  --color-status-danger-bg: var(--danger-100);
+  --color-status-info: var(--info-500);
+  --color-status-info-bg: var(--info-100);
+  --color-status-warning: var(--warning-500);
+  --color-status-warning-bg: var(--warning-100);
+
+  /* Selection */
+  --color-selection-selected: #ddeef7;
+  --color-selection-highlighted: #fef3e2;
+
+  /* Font */
+  --font-yekan-bakh: "Yekan Bakh FaNum", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-yekan-bakh);
+}
+
+body {
+  background-color: var(--color-bg-default);
+  color: var(--color-text-default);
+  font-family: var(--font-yekan-bakh);
+  line-height: 1.5;
+}
+
+/* RTL logical properties utilities */
+.ms-auto { margin-inline-start: auto; }
+.me-auto { margin-inline-end: auto; }
+.ps-0 { padding-inline-start: 0; }
+.pe-0 { padding-inline-end: 0; }
+.start-0 { inset-inline-start: 0; }
+.end-0 { inset-inline-end: 0; }
+
+/* Focus ring utility */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-interactive-focus);
+  outline-offset: 2px;
+}
+
+/* Persian numeral conversion helper classes */
+.persian-numerals {
+  font-feature-settings: "ss01";
+}
