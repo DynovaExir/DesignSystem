@@ -61,43 +61,25 @@ export interface SidebarProps {
 const defaultNavItems: NavItem[] = [
   {
     title: "داشبورد",
-    href: "/dashboard",
+    href: "/",
     icon: LayoutDashboard,
   },
   {
     title: "اشخاص و کاربران",
-    href: "/persons",
+    href: "/organization/persons",
     icon: Users,
     permission: "person:read",
   },
   {
     title: "ساختار سازمانی",
-    href: "/org-units",
+    href: "/organization/units",
     icon: Building2,
     permission: "org-unit:read",
   },
   {
-    title: "حاکمیت داده",
-    href: "/governance",
-    icon: FolderTree,
-    permission: "governance:read",
-    children: [
-      {
-        title: "دامنه‌ها",
-        href: "/governance/domains",
-        icon: FolderTree,
-      },
-      {
-        title: "مدل‌های داده",
-        href: "/governance/models",
-        icon: Database,
-      },
-    ],
-  },
-  {
     title: "دیکشنری داده",
-    href: "/data-dictionary",
-    icon: FileText,
+    href: "/governance/data-dictionary",
+    icon: Database,
     permission: "dictionary:read",
   },
   {

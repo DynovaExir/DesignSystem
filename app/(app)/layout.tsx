@@ -5,8 +5,8 @@ import { useRouter, usePathname } from "next/navigation"
 import { AppShell } from "@/components/layout/app-shell"
 
 /**
- * Dashboard Layout
- * Wraps all dashboard pages with AppShell (Sidebar + Header)
+ * App Layout
+ * Wraps all app pages with AppShell (Sidebar + Header)
  */
 
 // Mock user data - replace with actual auth context
@@ -50,28 +50,38 @@ const mockPermissions = [
 
 // Breadcrumb mapping
 const breadcrumbMap: Record<string, Array<{ label: string; href?: string }>> = {
-  "/dashboard": [{ label: "داشبورد" }],
-  "/persons": [{ label: "اشخاص و کاربران" }],
-  "/org-units": [{ label: "ساختار سازمانی" }],
+  "/": [{ label: "داشبورد" }],
+  "/organization/persons": [
+    { label: "سازمان", href: "/" },
+    { label: "اشخاص" },
+  ],
+  "/organization/units": [
+    { label: "سازمان", href: "/" },
+    { label: "واحدهای سازمانی" },
+  ],
+  "/governance/data-dictionary": [
+    { label: "حاکمیت داده", href: "/" },
+    { label: "دیکشنری داده" },
+  ],
   "/admin/roles": [
-    { label: "مدیریت", href: "/dashboard" },
+    { label: "مدیریت", href: "/" },
     { label: "نقش‌ها" },
   ],
   "/admin/permissions": [
-    { label: "مدیریت", href: "/dashboard" },
+    { label: "مدیریت", href: "/" },
     { label: "مجوزها" },
   ],
   "/admin/users": [
-    { label: "مدیریت", href: "/dashboard" },
+    { label: "مدیریت", href: "/" },
     { label: "کاربران مستأجر" },
   ],
   "/admin/create-tenant": [
-    { label: "مدیریت", href: "/dashboard" },
+    { label: "مدیریت", href: "/" },
     { label: "ایجاد مستأجر جدید" },
   ],
 }
 
-export default function DashboardLayout({
+export default function AppLayout({
   children,
 }: {
   children: React.ReactNode
@@ -84,7 +94,7 @@ export default function DashboardLayout({
   }
 
   const handleTenantChange = (tenantId: string) => {
-    console.log("[v0] Switching to tenant:", tenantId)
+    console.log("Switching to tenant:", tenantId)
     // Would refresh context with new tenant data
     router.refresh()
   }
